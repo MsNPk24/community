@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>MsNstudios.X</title>
+
+  <!-- FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      overflow-x:hidden;
+      background:
+      radial-gradient(circle at top left,#2563eb22,transparent 30%),
+      radial-gradient(circle at bottom right,#9333ea22,transparent 30%),
+      #050816;
+
+      color:white;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:40px 20px;
+    }
+
+    /* Animated Background Glow */
+
+    .bg-blur1,
+    .bg-blur2{
+      position:fixed;
+      width:350px;
+      height:350px;
+      border-radius:50%;
+      filter:blur(120px);
+      z-index:-1;
+      animation:float 8s ease-in-out infinite;
+    }
+
+    .bg-blur1{
+      background:#2563eb;
+      top:-100px;
+      left:-100px;
+    }
+
+    .bg-blur2{
+      background:#9333ea;
+      bottom:-120px;
+      right:-120px;
+      animation-delay:2s;
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(30px);
+      }
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    /* Main Glass Card */
+
+    .container{
+      width:100%;
+      max-width:850px;
+
+      background:rgba(255,255,255,0.08);
+
+      border:1px solid rgba(255,255,255,0.15);
+
+      backdrop-filter:blur(25px);
+      -webkit-backdrop-filter:blur(25px);
+
+      border-radius:30px;
+
+      padding:45px;
+
+      box-shadow:
+      0 10px 40px rgba(0,0,0,0.45),
+      inset 0 1px 1px rgba(255,255,255,0.15);
+
+      animation:fadeUp 1s ease;
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(40px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0px);
+      }
+    }
+
+    h1{
+      text-align:center;
+      font-size:42px;
+      font-weight:700;
+
+      background:linear-gradient(to right,#ffffff,#60a5fa,#c084fc);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+
+      margin-bottom:12px;
+      letter-spacing:1px;
+    }
+
+    .subtitle{
+      text-align:center;
+      color:#cbd5e1;
+      margin-bottom:35px;
+      font-size:15px;
+    }
+
+    form{
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    .row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    label{
+      display:block;
+      margin-bottom:8px;
+      color:#e2e8f0;
+      font-size:14px;
+      font-weight:500;
+    }
+
+    input,
+    textarea,
+    select{
+
+      width:100%;
+      padding:15px 18px;
+
+      border-radius:16px;
+
+      border:1px solid rgba(255,255,255,0.08);
+
+      background:rgba(255,255,255,0.06);
+
+      color:white;
+
+      outline:none;
+
+      transition:0.35s ease;
+
+      font-size:14px;
+    }
+
+    input::placeholder,
+    textarea::placeholder{
+      color:#94a3b8;
+    }
+
+    textarea{
+      resize:vertical;
+      min-height:140px;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus{
+      border:1px solid #60a5fa;
+      transform:scale(1.01);
+
+      box-shadow:
+      0 0 20px rgba(96,165,250,0.25);
+    }
+
+    select option{
+      background:#0f172a;
+      color:white;
+    }
+
+    /* Premium Button */
+
+    button{
+      padding:16px;
+
+      border:none;
+
+      border-radius:18px;
+
+      background:linear-gradient(135deg,#2563eb,#7c3aed);
+
+      color:white;
+
+      font-size:16px;
+
+      font-weight:600;
+
+      cursor:pointer;
+
+      transition:0.4s ease;
+
+      box-shadow:
+      0 10px 25px rgba(37,99,235,0.35);
+    }
+
+    button:hover{
+      transform:translateY(-4px) scale(1.01);
+
+      box-shadow:
+      0 18px 35px rgba(37,99,235,0.45);
+    }
+
+    .socials{
+      margin-top:28px;
+      text-align:center;
+    }
+
+    .socials a{
+      color:#93c5fd;
+      text-decoration:none;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    .socials a:hover{
+      color:white;
+    }
+
+    .footer{
+      text-align:center;
+      margin-top:25px;
+      color:#94a3b8;
+      font-size:13px;
+    }
+
+    @media(max-width:768px){
+
+      .container{
+        padding:28px;
+      }
+
+      h1{
+        font-size:32px;
+      }
+
+      .row{
+        grid-template-columns:1fr;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Glow -->
+  <div class="bg-blur1"></div>
+  <div class="bg-blur2"></div>
+
+  <!-- Main Card -->
+
+  <div class="container">
+
+    <h1>MsNstudios.X</h1>
+
+    <p class="subtitle">
+      Premium Editing & Creative Services Request Form
+    </p>
+
+    <!-- FORM -->
+
+    <form action="https://formsubmit.co/gamerchange90@gmail.com" method="POST">
+
+      <!-- SETTINGS -->
+
+      <input type="hidden" name="_captcha" value="false">
+
+      <input type="hidden"
+      name="_subject"
+      value="New Client Request - MsNstudios.X">
+
+      <!-- NAME -->
+
+      <div>
+        <label>Full Name</label>
+
+        <input
+        type="text"
+        name="name"
+        placeholder="Enter your full name"
+        required>
+      </div>
+
+      <!-- EMAIL + WHATSAPP -->
+
+      <div class="row">
+
+        <div>
+          <label>Email Address</label>
+
+          <input
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          required>
+        </div>
+
+        <div>
+          <label>WhatsApp Number</label>
+
+          <input
+          type="tel"
+          name="phone"
+          placeholder="Enter your number"
+          required>
+        </div>
+
+      </div>
+
+      <!-- SERVICE -->
+
+      <div>
+
+        <label>What Service Do You Need?</label>
+
+        <select name="service" required>
+
+          <option value="">Select Service</option>
+
+          <option>Video Editing</option>
+
+          <option>YouTube Video Editing</option>
+
+          <option>Instagram Reel Editing</option>
+
+          <option>Gaming Montage Editing</option>
+
+          <option>Thumbnail Designing</option>
+
+          <option>Motion Graphics</option>
+
+          <option>Color Grading</option>
+
+          <option>Graphic Designing</option>
+
+          <option>Other</option>
+
+        </select>
+
+      </div>
+
+      <!-- BUDGET + DEADLINE -->
+
+      <div class="row">
+
+        <div>
+
+          <label>Your Budget</label>
+
+          <input
+          type="text"
+          name="budget"
+          placeholder="Example: ₹5000">
+
+        </div>
+
+        <div>
+
+          <label>Project Deadline</label>
+
+          <input
+          type="date"
+          name="deadline">
+
+        </div>
+
+      </div>
+
+      <!-- REFERENCES -->
+
+      <div>
+
+        <label>Reference Links</label>
+
+        <input
+        type="url"
+        name="reference"
+        placeholder="Paste YouTube / Instagram / Drive link">
+
+      </div>
+
+      <!-- DETAILS -->
+
+      <div>
+
+        <label>Project Details</label>
+
+        <textarea
+        name="details"
+        placeholder="Describe your project style, effects, duration, transitions, subtitles, music style, etc."
+        required></textarea>
+
+      </div>
+
+      <!-- FILES -->
+
+      <div>
+
+        <label>Upload Files Link (Optional)</label>
+
+        <input
+        type="url"
+        name="files"
+        placeholder="Paste Google Drive / Dropbox link">
+
+      </div>
+
+      <!-- BUTTON -->
+
+      <button type="submit">
+        Submit Request
+      </button>
+
+    </form>
+
+    <!-- SOCIALS -->
+
+    <div class="socials">
+
+      Instagram :
+      <a href="https://instagram.com/msnstudios.x"
+      target="_blank">
+        @msnstudios.x
+      </a>
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+      © 2026 MsNstudios.X — All Rights Reserved
+    </div>
+
+  </div>
+
+</body>
+</html>
